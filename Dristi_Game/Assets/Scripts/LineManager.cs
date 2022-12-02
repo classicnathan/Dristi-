@@ -23,18 +23,20 @@ public class LineManager : MonoBehaviour
 
     }
 
-    public void ToggleBetweenDiscreteAndContinious()
+    public void ToggleBetweenDiscreteAndContinuous()
     {
         continuous = !continuous;
         if (continuous)
         {
-            buttonText.text = " Discrete";
+            buttonText.text = "Discrete";
+
         }
         else
         {
-            buttonText.text = " Continuous";
+            buttonText.text = "Continuous";
         }
     }
+
 
     void DrawLine(ARObjectPlacementEventArgs args)
     {
@@ -52,11 +54,12 @@ public class LineManager : MonoBehaviour
             if(!continuous)
               pointCount = 0;
         }
+       
         //2. let the points location in the line renderer 
         line.SetPosition(index:line.positionCount-1,args.placementObject.transform.position);
 
-
-        if (lineRenderer.positionCount>1 )
+        //for the allignment of the measurement text and line settings
+        if (line.positionCount>1 )
         {
             Vector3 pointA = line.GetPosition(index: line.positionCount - 1);
             Vector3 pointB = line.GetPosition(index: line.positionCount - 2);
